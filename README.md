@@ -2,7 +2,7 @@
 ![](https://github-readme-stats.vercel.app/api?username=KaReeeeeeeeEM&theme=dark&hide_border=false&include_all_commits=true&count_private=true)<br/>
 
 # 💫 About Me:
-🔭 I’m currently working on web development<br>👯 I’m looking to collaborate on a Football League System<br>🤝 I’m looking for help with top back-end development courses<br>🌱 I’m currently learning Node Js and Express Js<br>💬 Ask me about web development technologies<br>⚡ Fun fact : Vibrant, Music lover , curious and always eager to learn 
+🔭 I’m currently working on 3D Web Development using JavaScript <br>👯 I’m looking to collaborate on a Football League System Project in our college<br>🤝 I’m currently doing projects based on MERN stack in Web Development<br>🌱 I’m currently learning Node Js and Express Js<br>💬 Ask me about web development technologies<br>⚡ Fun fact : Vibrant, Music lover , curious and always eager to learn 
 
 # 📊 GitHub Stats:
 ![](https://github-readme-streak-stats.herokuapp.com/?user=KaReeeeeeeeEM&theme=dark&hide_border=false)<br/>
