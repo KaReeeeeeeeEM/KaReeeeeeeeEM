@@ -1,12 +1,5 @@
-# Profile stat
-![](https://github-readme-stats.vercel.app/api?username=KaReeeeeeeeEM&theme=dark&hide_border=false&include_all_commits=true&count_private=true)<br/>  
-
 # 💫 About Me:
 🔭 I’m currently working on 3D Web Development using JavaScript <br>👯 I’m looking to collaborate on a Football League System Project in our college<br>🤝 I’m currently doing projects based on MERN stack in Web Development<br>🌱 I’m currently learning Node Js and Express Js<br>💬 Ask me about web development technologies<br>⚡ Fun fact : Vibrant, Music lover , curious and always eager to learn 
-
-# 📊 GitHub Stats:
-![](https://github-readme-streak-stats.herokuapp.com/?user=KaReeeeeeeeEM&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=KaReeeeeeeeEM&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/K.a.reem___) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/johnson%mmbaga) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/jonij00) 
