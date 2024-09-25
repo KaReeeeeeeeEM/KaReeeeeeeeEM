@@ -13,17 +13,15 @@
 
 <p align="left"> <a href="https://twitter.com/jonij00" target="blank"><img src="https://img.shields.io/twitter/follow/jonij00?logo=twitter&style=for-the-badge" alt="jonij00" /></a> </p>
 
-- 🔭 I’m currently working on [DalaliFasta](https://dalalifasta.vercel.app)
+- 🔭 I’m currently working on [Winga](https://winga.vercel.app)
 
 - 🌱 I’m currently learning **Next Js and React Native**
 
-- 👯 I’m looking to collaborate on [CoICT League Website](https://coict-league-site.vercel.app)
+- 👯 I’m looking to collaborate on [DalaliFasta](https://dalalifasta.vercel.app)
 
-- 🤝 I’m looking for help with [a Movie downloading server in the JoKa Movies Platform](https:jo-ka-movies-client.vercel.app)
+- 🤝 Stream Movies and Series in [JokaFlix](https:jokaflix.vercel.app)
 
 - 📝 I regularly write articles on [https:linkedin.com/johnson-mmbaga](https:linkedin.com/johnson-mmbaga)
-
-- 💬 Ask me about **React Js, Java, Vue js ,PHP, Node Js and Express Js**
 
 - 📫 How to reach me **jokareem24@gmail.com**
 
