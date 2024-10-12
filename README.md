@@ -25,7 +25,7 @@
 
 - 📫 How to reach me **jokareem24@gmail.com**
 
-- ⚡ Fun fact **I think i am a geek and i interested in Coding, Science and Mathematics. I am a fun person and collaborative in nature.**
+- ⚡ Fun fact **I think i am a geek and i am interested in Coding, Science and Mathematics. I am a fun person and collaborative in nature.**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
