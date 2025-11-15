@@ -1,7 +1,5 @@
 <h1 align="center">Hi 👋, I'm Kareem</h1>
-<h3 align="center">A Full JavaScript Developer</h3>
-
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kareeeeeeeeem&show_icons=true&locale=en&layout=compact" alt="kareeeeeeeeem" /></p>
+<h3 align="center">FullStack Software Developer</h3>
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/ryo-ma/github-profile-trophy)
 
@@ -20,6 +18,9 @@
 - 📫 How to reach me **jokareem24@gmail.com**
 
 - ⚡ Fun fact **I think i am a geek and i am interested in Coding, Science and Mathematics. I am a fun person and collaborative in nature.**
+
+
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kareeeeeeeeem&show_icons=true&locale=en&layout=compact" alt="kareeeeeeeeem" /></p>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
