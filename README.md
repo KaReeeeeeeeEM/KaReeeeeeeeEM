@@ -9,7 +9,6 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=kareeeeeeeeem&label=Profile%20views&color=0e75b6&style=flat" alt="kareeeeeeeeem" /> </p>
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=KaReeeeeeeeEM)](https://github.com/ryo-ma/github-profile-trophy)
 [![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/ryo-ma/github-profile-trophy)
 
 <p align="left"> <a href="https://twitter.com/jonij00" target="blank"><img src="https://img.shields.io/twitter/follow/jonij00?logo=twitter&style=for-the-badge" alt="jonij00" /></a> </p>
