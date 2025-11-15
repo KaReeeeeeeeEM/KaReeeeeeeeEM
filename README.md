@@ -2,19 +2,13 @@
 
 <p align="left"> <a href="https://twitter.com/jonij00" target="blank"><img src="https://img.shields.io/twitter/follow/jonij00?logo=twitter&style=for-the-badge" alt="jonij00" /></a> </p>
 
-- 🔭 I’m currently working on [Winga](https://winga.vercel.app)
-
-- 🌱 I’m currently learning **Next Js and React Native**
-
-- 👯 I’m looking to collaborate on [DalaliFasta](https://dalalifasta.vercel.app)
+- 🔭 I’m currently working on [Winga](https://winga-v2.vercel.app)
 
 - 🤝 Stream Movies and Series in [JokaFlix](https:jokaflix.vercel.app)
 
 - 📝 I regularly write articles on [https:linkedin.com/johnson-mmbaga](https:linkedin.com/johnson-mmbaga)
 
 - 📫 How to reach me **jokareem24@gmail.com**
-
-- ⚡ Fun fact **I think i am a geek and i am interested in Coding, Science and Mathematics. I am a fun person and collaborative in nature.**
 
 
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kareeeeeeeeem&show_icons=true&locale=en&layout=compact" alt="kareeeeeeeeem" /></p>
