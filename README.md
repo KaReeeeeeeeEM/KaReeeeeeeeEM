@@ -1,6 +1,3 @@
-<h1 align="center">Hi 👋, I'm Kareem</h1>
-<h3 align="center">FullStack Software Developer</h3>
-
 [![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/ryo-ma/github-profile-trophy)
 
 <p align="left"> <a href="https://twitter.com/jonij00" target="blank"><img src="https://img.shields.io/twitter/follow/jonij00?logo=twitter&style=for-the-badge" alt="jonij00" /></a> </p>
