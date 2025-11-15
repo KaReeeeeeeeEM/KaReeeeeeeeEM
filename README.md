@@ -3,12 +3,6 @@
 
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kareeeeeeeeem&show_icons=true&locale=en&layout=compact" alt="kareeeeeeeeem" /></p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=ryo-ma&show_icons=true&locale=en" alt="kareeeeeeeeem" /></p>
-
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=kareeeeeeeeem&" alt="kareeeeeeeeem" /></p>
-
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=kareeeeeeeeem&label=Profile%20views&color=0e75b6&style=flat" alt="kareeeeeeeeem" /> </p>
-
 [![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/ryo-ma/github-profile-trophy)
 
 <p align="left"> <a href="https://twitter.com/jonij00" target="blank"><img src="https://img.shields.io/twitter/follow/jonij00?logo=twitter&style=for-the-badge" alt="jonij00" /></a> </p>
