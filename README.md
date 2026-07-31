@@ -60,6 +60,13 @@ to stop coding  ███░░░░░░░░░░░░░░░░   15
 
 <sub>🐍 <a href="https://KaReeeeeeeeEM.github.io/KaReeeeeeeeEM/snake.html">Enter interactive Snake Mode with sound</a>.</sub>
 
+## Interactive lab
+
+| Experience | What happens |
+|---|---|
+| [🐍 Angry Snake](https://KaReeeeeeeeEM.github.io/KaReeeeeeeeEM/snake.html) | The snake chases your cursor while preserving **KAREEM** in green |
+| [🎮 Kareem's Arcade](https://KaReeeeeeeeEM.github.io/KaReeeeeeeeEM/arcade.html) | Trace the runtime, hunt bugs, and fight the variable-naming boss |
+
 > If the build is green, I meant to do that. If it is red, the plot is developing.
 
 ```sh

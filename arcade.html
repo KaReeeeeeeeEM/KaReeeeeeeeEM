@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#010409">
+  <title>Kareem // Interactive Lab</title>
+  <style>
+    :root{color-scheme:dark;--bg:#010409;--panel:#0d1117;--line:#30363d;--text:#c9d1d9;--muted:#8b949e;--green:#39d353;--blue:#58a6ff;--red:#f85149}*{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}main{width:min(94vw,1050px);margin:auto;padding:36px 0 60px}h1{text-align:center;letter-spacing:.08em}h2{font-size:18px}.lead{text-align:center;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:20px;min-height:250px}.wide{grid-column:1/-1}.nodes{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:38px}.node{padding:13px 10px;border:1px solid var(--line);border-radius:8px;background:#161b22;color:var(--text);font:inherit;cursor:pointer}.node.active{border-color:var(--green);box-shadow:0 0 20px #23863688}.arrow{color:var(--muted)}.log{margin:22px 0 0;color:var(--green);min-height:38px}.arena{height:150px;border:1px dashed var(--line);border-radius:9px;position:relative;overflow:hidden}.bug{position:absolute;width:42px;height:42px;border:0;border-radius:8px;background:var(--red);font-size:21px;cursor:pointer;transition:left .12s,top .12s}.score{color:var(--muted)}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.choices button,nav a{padding:10px;border:1px solid #238636;border-radius:8px;background:#238636;color:#fff;font:inherit;cursor:pointer;text-decoration:none}.choices button:hover,nav a:hover{background:#2ea043}.prompt{min-height:50px}.result{color:var(--blue);min-height:24px}nav{text-align:center;margin-top:28px}@media(max-width:720px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.nodes{flex-direction:column}.arrow{transform:rotate(90deg)}}
+  </style>
+</head>
+<body><main>
+  <h1>KAREEM // INTERACTIVE LAB</h1><p class="lead">Trace a system, hunt a bug, or fight the naming boss.</p>
+  <section class="grid">
+    <article class="card wide"><h2>Runtime architecture — click to trace execution</h2><div class="nodes" id="nodes"><button class="node">Interesting problem</button><span class="arrow">→</span><button class="node">Learn</button><span class="arrow">→</span><button class="node">Build</button><span class="arrow">→</span><button class="node">Break it</button><span class="arrow">→</span><button class="node">Debug</button><span class="arrow">→</span><button class="node">Ship</button></div><p class="log" id="log">Select a node to inspect the loop.</p></article>
+    <article class="card"><h2>Bug Hunt</h2><p class="score">Bugs squashed: <strong id="score">0</strong> · Time: <strong id="time">15</strong>s</p><div class="arena" id="arena"><button class="bug" id="bug" aria-label="Squash bug">🐛</button></div></article>
+    <article class="card"><h2>Variable Naming Boss</h2><p class="prompt" id="prompt"></p><div class="choices" id="choices"></div><p class="result" id="result"></p></article>
+  </section>
+  <nav><a href="./snake.html">← Return to Angry Snake</a></nav>
+  <script>
+    const descriptions=['A vague idea enters the machine.','Curiosity downloads the missing context.','The editor opens. Confidence is suspiciously high.','A hidden assumption reveals itself.','Logs, tests, and stubbornness enter combat.','Useful beats perfect. The loop begins again.'];
+    const nodes=[...document.querySelectorAll('.node')],log=document.querySelector('#log');
+    nodes.forEach((node,i)=>node.addEventListener('click',()=>{nodes.forEach(n=>n.classList.remove('active'));node.classList.add('active');log.textContent=`0${i+1} // ${descriptions[i]}`;}));
+    const arena=document.querySelector('#arena'),bug=document.querySelector('#bug'),scoreEl=document.querySelector('#score'),timeEl=document.querySelector('#time');let score=0,time=15,timer;
+    function moveBug(){bug.style.left=`${Math.random()*Math.max(1,arena.clientWidth-48)}px`;bug.style.top=`${Math.random()*Math.max(1,arena.clientHeight-48)}px`;}
+    bug.addEventListener('click',()=>{if(time<=0){time=15;score=0;timer=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0){clearInterval(timer);bug.textContent='↻';}},1000)}score++;scoreEl.textContent=score;bug.textContent='💥';setTimeout(()=>bug.textContent='🐛',120);moveBug();});moveBug();
+    const rounds=[{q:'A boolean that controls whether the snake is pursuing:',a:['x','flag','isSnakeChasing','doThing'],ok:2},{q:'A collection of contribution cells:',a:['data','stuff','contributionCells','arr2'],ok:2},{q:'A function that enables audio after user interaction:',a:['go','unlockAudio','handler2','magic'],ok:1}];let round=0;
+    function renderRound(){const r=rounds[round%rounds.length];document.querySelector('#prompt').textContent=r.q;const box=document.querySelector('#choices');box.replaceChildren();r.a.forEach((name,i)=>{const b=document.createElement('button');b.textContent=name;b.onclick=()=>{document.querySelector('#result').textContent=i===r.ok?'Critical hit. Readability +10.':'The boss resists. Be more specific.';if(i===r.ok){round++;setTimeout(renderRound,650)}};box.append(b)});};renderRound();
+  </script>
+</main></body></html>

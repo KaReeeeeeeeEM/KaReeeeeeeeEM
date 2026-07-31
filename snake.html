@@ -4,110 +4,143 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#010409">
-  <title>Kareem // Snake Mode</title>
+  <title>Kareem // Angry Snake</title>
   <style>
-    :root { color-scheme: dark; }
+    :root { color-scheme: dark; --green:#39d353; --dim:#0e4429; --panel:#0d1117; --line:#30363d; }
     * { box-sizing: border-box; }
-    body {
-      min-height: 100vh; margin: 0; display: grid; place-items: center;
-      background: #010409; color: #c9d1d9;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    }
-    main { width: min(94vw, 900px); padding: 24px 0; text-align: center; }
-    .frame {
-      position: relative; overflow: hidden; border: 1px solid #30363d;
-      border-radius: 16px; background: #0d1117; box-shadow: 0 20px 80px #000;
-      transition: border-color .2s, transform .2s;
-    }
-    .frame:hover { border-color: #39d353; transform: translateY(-2px); }
-    img { display: block; width: 100%; min-height: 120px; user-select: none; }
-    button {
-      margin-top: 20px; padding: 11px 16px; border: 1px solid #238636;
-      border-radius: 8px; background: #238636; color: white; font: inherit;
-      cursor: pointer;
-    }
-    button:hover { background: #2ea043; }
-    button:focus-visible { outline: 3px solid #58a6ff; outline-offset: 3px; }
-    p { color: #8b949e; font-size: 13px; }
-    .spark {
-      position: fixed; width: 8px; height: 8px; border-radius: 2px;
-      background: #39d353; pointer-events: none; animation: vanish .7s forwards;
-      box-shadow: 0 0 12px #39d353;
-    }
-    @keyframes vanish { to { opacity: 0; transform: scale(3) rotate(90deg); } }
-    @media (prefers-reduced-motion: reduce) {
-      .frame { transition: none; }
-      .frame:hover { transform: none; }
-      .spark { display: none; }
-    }
+    body { min-height:100vh; margin:0; display:grid; place-items:center; background:#010409; color:#c9d1d9; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    main { width:min(96vw,1100px); padding:28px 0; text-align:center; }
+    h1 { margin:0 0 8px; font-size:clamp(20px,4vw,34px); letter-spacing:.08em; }
+    .status { min-height:22px; margin:0 0 14px; color:#8b949e; }
+    .frame { position:relative; border:1px solid var(--line); border-radius:16px; background:var(--panel); box-shadow:0 20px 80px #000; transition:border-color .2s, transform .2s; cursor:crosshair; touch-action:none; }
+    .frame.angry { border-color:#f85149; transform:translateY(-2px); box-shadow:0 20px 90px #3d0d0d; }
+    canvas { display:block; width:100%; aspect-ratio:53/16; border-radius:16px; }
+    .controls { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:18px; }
+    button,a.button { padding:10px 15px; border:1px solid #238636; border-radius:8px; background:#238636; color:#fff; font:inherit; text-decoration:none; cursor:pointer; }
+    button:hover,a.button:hover { background:#2ea043; }
+    button:focus-visible,a:focus-visible { outline:3px solid #58a6ff; outline-offset:3px; }
+    p.hint { color:#8b949e; font-size:13px; }
+    .spark { position:fixed; width:7px; height:7px; border-radius:2px; background:var(--green); pointer-events:none; animation:vanish .65s forwards; box-shadow:0 0 12px var(--green); }
+    @keyframes vanish { to { opacity:0; transform:scale(3) rotate(90deg); } }
+    @media (prefers-reduced-motion:reduce) { .frame { transition:none; } .spark { display:none; } }
   </style>
 </head>
 <body>
   <main>
+    <h1>KAREEM // SNAKE MODE</h1>
+    <p class="status" id="status" aria-live="polite">The snake is sleeping. Enter the grid to wake it.</p>
     <div class="frame" id="field">
-      <img src="https://raw.githubusercontent.com/KaReeeeeeeeEM/KaReeeeeeeeEM/output/github-contribution-grid-snake-dark.svg" alt="Animated snake eating Kareem's GitHub contributions">
+      <canvas id="game" width="1060" height="320" aria-label="Interactive contribution grid spelling KAREEM, chased by a snake"></canvas>
     </div>
-    <button id="sound" type="button">▶ Enable snake sound</button>
-    <p>Move across the grid. Click anywhere to feed the snake.</p>
+    <div class="controls">
+      <button id="sound" type="button">▶ Wake snake + sound</button>
+      <button id="calm" type="button">Reset snake</button>
+      <a class="button" href="./arcade.html">Open Kareem's arcade →</a>
+    </div>
+    <p class="hint">Move over the heatmap to make it chase you. Click to feed it. The green KAREEM trail never disappears.</p>
   </main>
   <script>
-    const button = document.querySelector('#sound');
+    const canvas = document.querySelector('#game');
+    const ctx = canvas.getContext('2d');
     const field = document.querySelector('#field');
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let audio;
-    let enabled = false;
-
-    function tone(frequency = 440, duration = 0.06) {
-      if (!enabled || !audio) return;
-      const oscillator = audio.createOscillator();
-      const gain = audio.createGain();
-      oscillator.type = 'square';
-      oscillator.frequency.value = frequency;
-      gain.gain.setValueAtTime(0.025, audio.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + duration);
-      oscillator.connect(gain).connect(audio.destination);
-      oscillator.start();
-      oscillator.stop(audio.currentTime + duration);
+    const status = document.querySelector('#status');
+    const soundButton = document.querySelector('#sound');
+    const calmButton = document.querySelector('#calm');
+    const COLS = 53, ROWS = 16, GAP = 3;
+    const letters = {
+      K:['10001','10010','10100','11000','10100','10010','10001'],
+      A:['01110','10001','10001','11111','10001','10001','10001'],
+      R:['11110','10001','10001','11110','10100','10010','10001'],
+      E:['11111','10000','10000','11110','10000','10000','11111'],
+      M:['10001','11011','10101','10101','10001','10001','10001']
+    };
+    const nameCells = new Set();
+    const word = 'KAREEM';
+    let startX = 7;
+    for (const char of word) {
+      letters[char].forEach((row,y) => [...row].forEach((on,x) => on === '1' && nameCells.add(`${startX+x},${4+y}`)));
+      startX += 7;
     }
+    const noise = Array.from({length:ROWS},(_,y) => Array.from({length:COLS},(_,x) => ((x*17+y*31+x*y*7)%19)/19));
+    let snake, target, hovering=false, angry=false, audio, soundOn=false, lastStep=0, stepMs=78, pointer={x:0,y:0};
 
-    function sparkAt(x, y) {
-      if (reducedMotion) return;
-      const spark = document.createElement('i');
-      spark.className = 'spark';
-      spark.style.left = `${x - 4}px`;
-      spark.style.top = `${y - 4}px`;
-      document.body.append(spark);
-      setTimeout(() => spark.remove(), 700);
+    function reset() {
+      snake = [{x:3,y:8},{x:2,y:8},{x:1,y:8}];
+      target = {x:26,y:8}; angry=false; field.classList.remove('angry');
+      status.textContent = 'The snake is calm. Enter the grid to provoke it.';
+      draw();
     }
-
-    button.addEventListener('click', async () => {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextClass) {
-        button.textContent = 'Audio is unavailable in this browser';
-        button.disabled = true;
-        return;
+    function sizeCanvas() {
+      const ratio = Math.min(devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.round(rect.width*ratio); canvas.height = Math.round(rect.width*16/53*ratio);
+      ctx.setTransform(ratio,0,0,ratio,0,0); draw();
+    }
+    function cellGeometry() {
+      const w=canvas.clientWidth, h=canvas.clientHeight;
+      return {cw:w/COLS,ch:h/ROWS};
+    }
+    function roundedCell(x,y,color,scale=.72) {
+      const {cw,ch}=cellGeometry(), w=Math.max(2,cw-GAP), h=Math.max(2,ch-GAP);
+      const ox=(cw-w*scale)/2, oy=(ch-h*scale)/2;
+      ctx.fillStyle=color; ctx.beginPath(); ctx.roundRect(x*cw+ox,y*ch+oy,w*scale,h*scale,Math.min(3,w/4)); ctx.fill();
+    }
+    function draw() {
+      const w=canvas.clientWidth,h=canvas.clientHeight;
+      ctx.clearRect(0,0,w,h); ctx.fillStyle='#0d1117'; ctx.fillRect(0,0,w,h);
+      for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) {
+        const named=nameCells.has(`${x},${y}`), n=noise[y][x];
+        roundedCell(x,y,named ? (n>.45?'#39d353':'#26a641') : (n>.91?'#0e4429':'#161b22'),named?1:.88);
       }
-      audio ||= new AudioContextClass();
-      await audio.resume();
-      enabled = !enabled;
-      button.textContent = enabled ? '🔊 Snake sound: ON' : '🔇 Snake sound: OFF';
-      tone(660, .1);
-    });
-
-    field.addEventListener('pointermove', event => {
-      sparkAt(event.clientX, event.clientY);
-      if (Math.random() < .08) tone(220 + Math.random() * 220);
-    });
-
-    field.addEventListener('click', event => {
-      tone(880, .12);
-      for (let i = 0; i < 12; i++) {
-        sparkAt(
-          event.clientX + (Math.random() - .5) * 60,
-          event.clientY + (Math.random() - .5) * 60
-        );
+      snake.slice().reverse().forEach((part,index) => roundedCell(part.x,part.y,index===snake.length-1?(angry?'#ff7b72':'#7ee787'):'#2ea043',1.08));
+      const head=snake[0], {cw,ch}=cellGeometry();
+      ctx.fillStyle='#010409'; ctx.beginPath(); ctx.arc((head.x+.35)*cw,(head.y+.35)*ch,Math.max(1,cw*.08),0,Math.PI*2); ctx.arc((head.x+.68)*cw,(head.y+.35)*ch,Math.max(1,cw*.08),0,Math.PI*2); ctx.fill();
+    }
+    function chooseStep() {
+      const head=snake[0], dx=target.x-head.x, dy=target.y-head.y;
+      const options=Math.abs(dx)>Math.abs(dy)
+        ? [{x:Math.sign(dx),y:0},{x:0,y:Math.sign(dy)}]
+        : [{x:0,y:Math.sign(dy)},{x:Math.sign(dx),y:0}];
+      options.push({x:dx?Math.sign(dx):1,y:0},{x:0,y:dy?Math.sign(dy):1});
+      const neck=snake[1];
+      return options.find(d => (d.x||d.y) && !(head.x+d.x===neck?.x && head.y+d.y===neck?.y)) || {x:1,y:0};
+    }
+    function step(time) {
+      if(time-lastStep>stepMs) {
+        lastStep=time;
+        if(hovering && angry) {
+          const d=chooseStep(), head=snake[0];
+          snake.unshift({x:(head.x+d.x+COLS)%COLS,y:(head.y+d.y+ROWS)%ROWS}); snake.pop();
+          if(soundOn) tone(105+snake[0].x*4+(Math.abs(target.x-snake[0].x)<3?180:0),.045);
+          draw();
+        }
       }
-    });
+      requestAnimationFrame(step);
+    }
+    function tone(frequency=220,duration=.05) {
+      if(!soundOn||!audio)return;
+      const osc=audio.createOscillator(),gain=audio.createGain(); osc.type=angry?'sawtooth':'square'; osc.frequency.value=frequency;
+      gain.gain.setValueAtTime(.018,audio.currentTime); gain.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+duration);
+      osc.connect(gain).connect(audio.destination); osc.start(); osc.stop(audio.currentTime+duration);
+    }
+    function locate(event) {
+      const rect=canvas.getBoundingClientRect(); pointer={x:event.clientX,y:event.clientY};
+      target={x:Math.max(0,Math.min(COLS-1,Math.floor((event.clientX-rect.left)/rect.width*COLS))),y:Math.max(0,Math.min(ROWS-1,Math.floor((event.clientY-rect.top)/rect.height*ROWS)))};
+    }
+    function spark(x,y) { if(matchMedia('(prefers-reduced-motion:reduce)').matches)return; const s=document.createElement('i');s.className='spark';s.style.left=`${x-3}px`;s.style.top=`${y-3}px`;document.body.append(s);setTimeout(()=>s.remove(),650); }
+    async function unlockSound() {
+      const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+      if(!AudioContextClass)return;
+      audio ||= new AudioContextClass(); await audio.resume(); soundOn=true;
+      soundButton.textContent='🔊 Chase sound: ON'; tone(660,.12);
+    }
+    field.addEventListener('pointerenter',event=>{hovering=true;angry=true;field.classList.add('angry');locate(event);status.textContent=soundOn?'ANGRY MODE: it can see and hear you.':'ANGRY MODE: click once to unleash its voice.';tone(330,.09);});
+    field.addEventListener('pointerleave',()=>{hovering=false;angry=false;field.classList.remove('angry');status.textContent='You escaped. The KAREEM trail remains.';draw();});
+    field.addEventListener('pointermove',event=>{locate(event);if(Math.random()<.28)spark(event.clientX,event.clientY);});
+    field.addEventListener('pointerdown',async event=>{await unlockSound();locate(event);for(let i=0;i<4;i++)snake.push({...snake[snake.length-1]});for(let i=0;i<14;i++)spark(event.clientX+(Math.random()-.5)*70,event.clientY+(Math.random()-.5)*70);tone(880,.14);});
+    soundButton.addEventListener('click',async()=>{if(!soundOn){await unlockSound();}else{soundOn=false;soundButton.textContent='🔇 Chase sound: OFF';}});
+    calmButton.addEventListener('click',reset);
+    addEventListener('resize',sizeCanvas); reset(); sizeCanvas(); requestAnimationFrame(step);
   </script>
 </body>
 </html>
