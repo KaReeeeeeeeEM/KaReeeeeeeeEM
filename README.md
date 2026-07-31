@@ -50,7 +50,7 @@ Stopping        ███░░░░░░░░░░░░░░░░   15
 
 ### Contribution Serpent 🐍
 
-![Kareem's contribution snake](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME/output/github-contribution-grid-snake.svg)
+![Kareem's contribution snake](https://raw.githubusercontent.com/KaReeeeeeeeEM/output/github-contribution-grid-snake.svg)
 
 > Green build: intentional. Red build: the plot is developing.
 
