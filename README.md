@@ -52,9 +52,13 @@ to stop coding  ███░░░░░░░░░░░░░░░░   15
 
 ## Contribution serpent
 
-[![Animated contribution-style heatmap spelling Kareem](./kareem-snake.svg)](https://KaReeeeeeeeEM.github.io/KaReeeeeeeeEM/snake.html)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KaReeeeeeeeEM/KaReeeeeeeeEM/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/KaReeeeeeeeEM/KaReeeeeeeeEM/output/github-contribution-grid-snake.svg">
+  <img alt="Snake animation eating Kareem's GitHub contributions" src="https://raw.githubusercontent.com/KaReeeeeeeeEM/KaReeeeeeeeEM/output/github-contribution-grid-snake.svg">
+</picture>
 
-<sub>🐍 Click the snake to enter interactive mode with sound.</sub>
+<sub>🐍 <a href="https://KaReeeeeeeeEM.github.io/KaReeeeeeeeEM/snake.html">Enter interactive Snake Mode with sound</a>.</sub>
 
 > If the build is green, I meant to do that. If it is red, the plot is developing.
 
