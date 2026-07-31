@@ -1,13 +1,14 @@
-# Hi, I’m Kareem 👾
+# `KAREEM.exe`
 
 ```console
 $ whoami
 Kareem — builder, curious mind, professional tab collector.
+
+$ uptime
+still learning...
 ```
 
-I turn vague ideas into useful things using code, stubborn curiosity, and the ancient engineering ritual of asking:
-
-> “Why does this work—and can I make it stranger?”
+I turn vague ideas into useful things using code, stubborn curiosity, and the ancient engineering ritual of asking: *“but why does that work?”*
 
 ```txt
 curiosity  > convention
@@ -16,7 +17,7 @@ shipping   > speculating
 gg         > rage quit
 ```
 
-### Runtime Architecture
+## Runtime architecture
 
 ```mermaid
 flowchart LR
@@ -30,31 +31,34 @@ flowchart LR
     G --> A
 ```
 
-### Quest Log
+## Current quest log
 
 - `[MAIN]` Build things that deserve to exist
 - `[SIDE]` Explore clever systems and tiny details
-- `[DAILY]` Learn something new
+- `[DAILY]` Learn one thing I did not know yesterday
 - `[BOSS]` Name variables properly
 - `[PASSIVE]` Accumulate browser tabs
 
-### Player Stats
+## Player stats
 
 ```txt
 Curiosity       ████████████████████  100
 Persistence     ██████████████████░░   90
 Debugging       ███████████████░░░░░   75
 Documentation   ████████████░░░░░░░░   60
-Stopping        ███░░░░░░░░░░░░░░░░   15
+Knowing when
+to stop coding  ███░░░░░░░░░░░░░░░░   15
 ```
 
-### Contribution Serpent 🐍
+## Contribution serpent
 
-![Kareem's contribution snake](https://raw.githubusercontent.com/KaReeeeeeeeEM/output/github-contribution-grid-snake.svg)
+[![Animated contribution-style heatmap spelling Kareem](./kareem-snake.svg)](https://KaReeeeeeeeEM.github.io/KaReeeeeeeeEM/snake.html)
 
-> Green build: intentional. Red build: the plot is developing.
+<sub>🐍 Click the snake to enter interactive mode with sound.</sub>
 
-```console
+> If the build is green, I meant to do that. If it is red, the plot is developing.
+
+```sh
 $ git status --short
 M  myself
 ```
