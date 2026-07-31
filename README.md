@@ -1,14 +1,4 @@
-[![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/ryo-ma/github-profile-trophy)
-
 <p align="left"> <a href="https://twitter.com/jonij00" target="blank"><img src="https://img.shields.io/twitter/follow/jonij00?logo=twitter&style=for-the-badge" alt="jonij00" /></a> </p>
-
-- 🔭 I’m currently working on [Winga](https://winga-v2.vercel.app)
-
-- 🤝 Stream Movies and Series in [JokaFlix](https:jokaflix.vercel.app)
-
-- 📝 I regularly write articles on [https:linkedin.com/johnson-mmbaga](https:linkedin.com/johnson-mmbaga)
-
-- 📫 How to reach me **jokareem24@gmail.com**
 
 
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kareeeeeeeeem&show_icons=true&locale=en&layout=compact" alt="kareeeeeeeeem" /></p>
